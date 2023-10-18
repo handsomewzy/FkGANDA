@@ -6,8 +6,8 @@ This is the official source code of the paper 'Features kept generative adversar
 论文链接：[https://www.sciencedirect.com/science/article/abs/pii/S0031320323003990]
 
 ## 安装
-正常的torch环境，按照HyperX配置即可。
-参考链接：[]
+正常的torch环境，按照DeepHyperX配置即可。
+参考链接：[https://github.com/nshaud/DeepHyperX]
 
 ## 使用说明
 ### 训练GAN
@@ -33,5 +33,5 @@ python Completed_Band_Select.py
 
 
 ## 说明
-本项目主要基于WGAN，WGAN-GP，CGAN等开源代码开发，baseline等分类网络基于大型的公开HyperX代码，数据集具体的读取方式也与之相同。
+本项目主要基于WGAN，WGAN-GP，CGAN等开源代码开发，baseline等分类网络基于大型的公开DeepHyperX代码，数据集具体的读取方式也与之相同。
 
