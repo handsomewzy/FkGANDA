@@ -1,6 +1,7 @@
 # FPGANDA官方代码说明
 This is the official source code of the paper 'Features kept generative adversarial network data augmentation strategy for hyperspectral image classification
 代码首先训练GAN模型，然后生成新数据后加入分类网络进行训练。
+论文链接：[https://www.sciencedirect.com/science/article/abs/pii/S0031320323003990]
 
 ## 安装
 安装项目所需的依赖库：
