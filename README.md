@@ -1,60 +1,97 @@
-# FPGANDA Official Code Description
-![title.png](image/title.png)
-This is the official source code of the paper 'Features kept generative adversarial network data augmentation strategy for hyperspectral image classification'
+# FPGANDA: Official Code Release  
+![title.png](image/title.png)  
+This repository contains the **official implementation** of the paper:  
+**"Feature-Preserving Generative Adversarial Network Data Augmentation Strategy for Hyperspectral Image Classification"**
 
-The code first trains the GAN model, then generates new data and incorporates it into the classification network for training.
+📄 **Paper Link**: [View on ScienceDirect](https://www.sciencedirect.com/science/article/abs/pii/S0031320323003990)
 
-Paper link: [https://www.sciencedirect.com/science/article/abs/pii/S0031320323003990]
+---
 
-## Network Architecture
+## 🧠 Overview
+
+In recent years, deep learning has led to significant progress in **hyperspectral image (HSI)** tasks, including classification, object detection, and anomaly detection. However, these models often suffer from **limited labeled samples** and **data imbalance**.  
+
+To address these challenges, we propose a novel **data augmentation strategy** called:
+
+> **FPGANDA – Feature-Preserving Generative Adversarial Network Data Augmentation**
+
+FPGANDA differs from existing GAN-based methods by **preserving key spectral features** of real HSI data using a dedicated band selection method. These preserved bands are then **fused with GAN-generated spectral features** to create more diverse and informative synthetic data, improving classification performance and robustness.
+
+---
+
+## 🔧 Network Architecture
+
+### Stage 1: GAN Training  
 ![stage1.png](image/stage1.png)
----
 
-> *In recent years, significant breakthroughs have been achieved in hyperspectral image (HSI) processing us
-ing deep learning techniques, including classification, object detection, and anomaly detection. However, 
-the practical application of deep learning in HSI processing is limited by challenges such as small-sample 
-size and sample imbalance issues. To mitigate these limitations, we propose a novel data augmentation 
-strategy called Feature-Preserving Generative Adversarial Network Data Augmentation (FPGANDA). What 
-sets our data augmentation strategy apart from existing generative model-based approaches is that we 
-preserve the main spectral bands of HSI data using a newly designed band selection method. Addition
-ally, our proposed generative model generates synthetic spectral bands, which are combined with the real 
-spectral bands using a mixture strategy to create augmented data. This approach ensures that the aug
-mented data retain the main features of the original data while also incorporating diverse features from 
-the generated data. We evaluate our method on three different HSI datasets, comparing it with state-of
-the-art techniques. Experimental results demonstrate that our proposed method significantly improves 
-classification performance in most scenes and exhibits remarkable compatibility.* 
----
+### Stage 2: Band Selection & Data Fusion  
 ![stage2.png](image/stage2.png)
+
+### Band Selection Visualization  
 ![bs.png](image/bs.png)
 
-## Installation
-A standard torch environment is required, and you can follow the DeepHyperX configuration.
+---
 
-Reference link: [https://github.com/nshaud/DeepHyperX]
+## 🎯 Key Highlights
 
-## Instructions
-### Train GAN
-After configuring the dataset path information, run the following code:
+- ✅ **Feature Preservation**: Maintains critical spectral bands using a novel band selection algorithm.
+- ✅ **Synthetic + Real Fusion**: Combines generated and real bands to enhance diversity while retaining core information.
+- ✅ **Improved Classification**: Outperforms state-of-the-art methods on multiple HSI datasets.
+- ✅ **Modular Pipeline**: Three-step workflow for GAN training, band selection, and final classification.
 
-```
+---
+
+## ⚙️ Installation
+
+A standard **PyTorch** environment is required.
+
+> ✅ We recommend configuring the environment based on [DeepHyperX](https://github.com/nshaud/DeepHyperX), which serves as the baseline for classification and dataset loading in this project.
+
+---
+
+## 🚀 How to Use
+
+### Step 1️⃣: Train the GAN
+
+After setting the dataset paths in the config, run:
+
+```bash
 python keepGAN.py
 ```
 
-### Perform Band Selection Based on Generated Results
-After training the GAN and generating samples, perform band selection.
+---
 
-```
+### Step 2️⃣: Perform Band Selection
+
+Once GAN training and sample generation are complete, select important bands:
+
+```bash
 python Band_Select.py
 ```
 
-### Train Classifier Based on Augmented Data
-Based on the selected bands, merge and generate new augmented data to train the network. For detailed parameter configurations, refer to the Completed_Band_Select.py file.
+---
 
-```
+### Step 3️⃣: Train the Classifier with Augmented Data
+
+Merge selected real and generated bands to form augmented data, then train the classifier. Detailed configs can be found in `Completed_Band_Select.py`.
+
+```bash
 python Completed_Band_Select.py
 ```
 
+---
 
-## Notes
-This project is mainly developed based on open-source codes such as WGAN, WGAN-GP, CGAN, etc. The baseline and classification networks are based on the large-scale public DeepHyperX code. The dataset reading method is also the same as in DeepHyperX.
+## 📂 Notes
+
+- This project builds on open-source GAN variants such as **WGAN**, **WGAN-GP**, and **CGAN**.
+- Classification and data loading methods are adapted from the **DeepHyperX** framework.
+- You may reuse or extend this code for other HSI tasks by modifying the band selection logic or classifier modules.
+
+---
+
+## 📬 Citation
+
+> If you find this work useful in your research, please consider citing the paper (citation info will be provided upon acceptance).
+
+---
 
